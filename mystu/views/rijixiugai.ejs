@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+<script type="text/javascript" src="javascripts/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="javascripts/index.js"></script>
+<link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+</head>
+
+<body>
+<div class="nav-top">
+	<span>个人后台管理系统</span>
+    <div class="nav-topright">
+    	<p>上次登陆时间：2015-04-15 22:33:50 </p>
+        <span>您好：尊敬的管理员</span><span class="zhuxiao">注销</span>
+    </div>
+</div>
+<div class="nav-down">
+	<div class="leftmenu1">
+        <div class="menu-oc"><img src="images/menu-all.png" /></div>
+    	<ul>
+        	<li>
+            	<a class="a_list a_list1">我的日记</a>
+                <div class="menu_list menu_list_first">
+                	<a class="lista_first myrj" >我的日记</a>
+                    <a  class="myrj">日记查看</a>
+                    <a href="#">日记修改</a>
+                    <a href="#">日记删除</a>
+										<a href="" id="addday">添加日记</a>
+                </div>
+            </li>
+            <li>
+            	<a class="a_list a_list2">权限管理</a>
+                <div class="menu_list">
+                	<a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+            <li>
+            	<a class="a_list a_list3">新闻管理</a>
+                <div class="menu_list">
+                	<a href="#">新闻中心</a>
+                    <a href="#">添加新闻</a>
+                    <a href="#">修改新闻</a>
+                    <a href="#">删除新闻</a>
+                </div>
+            </li>
+            <li>
+            	<a class="a_list a_list3">新闻管理</a>
+                <div class="menu_list">
+                	<a href="#">新闻中心</a>
+                    <a href="#">添加新闻</a>
+                    <a href="#">修改新闻</a>
+                    <a href="#">删除新闻</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="leftmenu2">
+    	<div class="menu-oc1"><img src="images/menu-all.png" /></div>
+        <ul>
+        	<li>
+            	<a class="j_a_list j_a_list1"></a>
+                <div class="j_menu_list j_menu_list_first">
+                	<span class="sp1"><i></i>全局设置</span>
+                	<a class="j_lista_first" href="#">基本设置</a>
+                    <a href="#">其他设置</a>
+                    <a href="#">界面风格</a>
+                    <a href="#">系统工具</a>
+                </div>
+            </li>
+            <li>
+            	<a class="j_a_list j_a_list2"></a>
+                <div class="j_menu_list">
+                	<span class="sp2"><i></i>权限管理</span>
+                	<a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+            <li>
+            	<a class="j_a_list j_a_list3"></a>
+                <div class="j_menu_list">
+                	<span class="sp3"><i></i>权限管理</span>
+                	<a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="rightcon">
+    	<div class="right_con">
+
+				<form id="add">
+					<div class="form-group">
+					    <label for="exampleInputEmail1">姓名</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入你的姓名">
+					</div>
+					<div class="form-group">
+					    <label for="word">部门</label>
+					    <textarea  id="word" cols="30" rows="10"></textarea>
+					 </div>
+					 <div class="checkbox">
+					    <label>
+					      <input type="checkbox"> Check me out
+					    </label>
+					 </div>
+					  <button type="button" id="xiugai"  class="btn btn-default">点我修改</button>
+			</form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+	<script type="text/javascript">
+		$(".myrj").click(function() {
+			location.href="/main"
+		});
+		var date=new Date;
+		console.log(date);
+		var timeone=date.getFullYear()+"/"+date.getMonth()+"/"+date.getDate();
+		console.log(timeone)
+		$("#tijiao").click(function() {
+			if($("#exampleInputEmail1").val()==""||$("#word").val()==""){
+				alert("不能为空");
+			}else{
+				$.ajax({
+					url: '/users/add',
+					type: 'post',
+					data: {tit:$("#exampleInputEmail1").val(),con:$("#word").val(),time:timeone},
+					success:function(data) {
+						console.log(data)
+						if(data==1){
+							alert("插入成功");
+							location.href="/main"
+						}else{
+							alert("请重新插入");
+							location.href="/rijiadd"
+						}
+					}
+				})
+			}
+
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</html>

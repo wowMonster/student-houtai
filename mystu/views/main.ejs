@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+<script type="text/javascript" src="/javascripts/jquery-1.11.0.js"></script>
+<script src="/javascripts/bootstrap.min.js"  charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/index.js"></script>
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+</head>
+
+<body>
+<div class="nav-top">
+	<span>后台管理系统</span>
+    <div class="nav-topright">
+    	<p id="timm">上次登陆时间：2015-04-15 22:33:50 </p>
+        <span>您好：尊敬的管理员</span><span class="zhuxiao">注销</span>
+    </div>
+</div>
+<div class="nav-down">
+	<div class="leftmenu1">
+        <div class="menu-oc"><img src="images/menu-all.png" /></div>
+    	<ul>
+        	<li>
+            	<a class="a_list a_list1">成员</a>
+                <div class="menu_list menu_list_first">
+                	<a class="lista_first" href="#">成员列表</a>
+                    <a href="#">信息查看</a>
+                    <a href="#">信息修改</a>
+                    <a href="#">信息删除</a>
+										<a id="addday">信息添加</a>
+                </div>
+            </li>
+            <li>
+            	<a class="a_list a_list2">权限管理</a>
+                <div class="menu_list">
+                	<a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+            <li>
+            	<a class="a_list a_list3">新闻管理</a>
+                <div class="menu_list">
+                	<a href="#">新闻中心</a>
+                    <a href="#">添加新闻</a>
+                    <a href="#">修改新闻</a>
+                    <a href="#">删除新闻</a>
+                </div>
+            </li>
+            <li>
+            	<a class="a_list a_list3">新闻管理</a>
+                <div class="menu_list">
+                	<a href="#">新闻中心</a>
+                    <a href="#">添加新闻</a>
+                    <a href="#">修改新闻</a>
+                    <a href="#">删除新闻</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="leftmenu2">
+    	<div class="menu-oc1"><img src="images/menu-all.png" /></div>
+        <ul>
+        	<li>
+            	<a class="j_a_list j_a_list1"></a>
+                <div class="j_menu_list j_menu_list_first">
+                	<span class="sp1"><i></i>全局设置</span>
+                	<a class="j_lista_first" href="#">基本设置</a>
+                    <a href="#">其他设置</a>
+                    <a href="#">界面风格</a>
+                    <a href="#">系统工具</a>
+                </div>
+            </li>
+            <li>
+            	<a class="j_a_list j_a_list2"></a>
+                <div class="j_menu_list">
+                	<span class="sp2"><i></i>权限管理</span>
+                	<a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+            <li>
+            	<a class="j_a_list j_a_list3"></a>
+                <div class="j_menu_list">
+                	<span class="sp3"><i></i>权限管理</span>
+                	<a href="#">基本权限</a>
+                    <a href="#">分配权限</a>
+                    <a href="#">权限管理</a>
+                    <a href="#">成员管理</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="rightcon">
+    	<div class="right_con">
+				<!-- 搜索框 -->
+				<div class="row">
+						<div class="col-lg-6">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for..." id="se">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-primary btn-lg" id="bch" data-toggle="modal" data-target="#myModal">
+									  Search!
+									</button>
+
+
+								</span>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+				</div><!-- /.row -->
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">查询结果为</h4>
+				      </div>
+				      <div class="modal-body  kk">
+								<table id="ta">
+
+								</table>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+
+				<!-- 表格 -->
+				<div id="wrap">
+				<div class="row1">
+				  <div class="col-sm-6 col-md-4" id="hezi">
+
+
+
+						<%if(data){%>
+
+							<% data.map(function(item){%>
+								<div class="thumbnail">
+									<img src="/images/coom.jpg">
+									<div class="caption">
+										<h3 ><%-item.tit%></h3>
+										<p id="p2"><%-item.con%></p>
+										<p><%-item.time%><p>
+										<p><button type="button" idd="<%-item._id%>" class="btn btn-primary xiu" data-toggle="modal" data-target=".bs-example-modal-lg">修改</button>
+											<a  class="btn btn-default shan" role="button"  odd="<%-item._id%>">删除</a></p>
+									</div>
+								</div>
+							<% }) %>
+
+							<%}else{%>
+
+
+								<%}%>
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+			<form id="fff">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">姓名</label>
+		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="输入姓名">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">部门</label>
+		    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="输入部门">
+		  </div>
+		  <button type="button" class="btn btn-default sub">Submit</button>
+		</form>
+    </div>
+  </div>
+</div>
+				  </div>
+					<nav aria-label="Page navigation">
+					  <ul class="pagination">
+					    <li>
+					      <a href="/main?pageNo=<%-pageNo<2?1:parseInt(pageNo)-1%>" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;上一页</span>
+					      </a>
+					    </li>
+
+					    <% if(page>4){ %>
+					    		<li><a href="/main?pageNo=1">1</a></li>
+					    		<li><a href="/main?pageNo=2">2</a></li>
+					    		<li><a href="#">....</a></li>
+					    		<li><a href="/main?pageNo=<%-page-1 %>"><%-page-1 %></a></li>
+					    		<li><a href="/main?pageNo=<%-page %>"><%-page %></a></li>
+					    <% }else{ %>
+					    		<% for(let i=0;i<page;i++){ %>
+					  		  <li><a href="/main?pageNo=<%-i+1 %>"><%-i+1 %></a></li>
+					    		<% } %>
+					    <% } %>
+
+					    <li>
+					      <a href="/main?pageNo=<%-pageNo>page?page:parseInt(pageNo)+1%>" aria-label="Next">
+					        <span aria-hidden="true">&raquo;下一页</span>
+					      </a>
+					    </li>
+					  </ul>
+					</nav>
+				</div>
+				</div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+	<script type="text/javascript">
+var dat=document.getElementById("timm");
+var date=new Date;
+dat.innerHTML=date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();
+		// 点击添加页面
+			$("#addday").click(function() {
+				location.href="/rijiadd"
+			});
+			$(".shan").click(function() {
+				var id=$(this).attr("odd");
+				console.log(id);
+				$.ajax({
+					url: '/shan?id='+id,
+					type: 'get',
+					success:function(data) {
+						if (data==1) {
+							alert("删除成功");
+							location.href="/main"
+						}
+					}
+				})
+
+
+			});
+			$(".xiu").click(function() {
+					var idd=$(this).attr("idd");
+					$(".sub").click(function() {
+						$.ajax({
+							url: '/users/xiugai',
+							type: 'post',
+							data: {id:idd,tit:$("#exampleInputEmail1").val(),con:$("#exampleInputPassword1").val()},
+							success:function (data) {
+								if(data==1){
+									alert("成功")
+									location.href="/main"
+								}else{
+									alert("失败")
+									location.href="/main"
+
+								}
+							}
+						})
+
+
+					});
+			});
+
+var attt="";
+$("#bch").click(function() {
+	$.ajax({
+		url: '/chazhao',
+		type:'post',
+		data:{name:$("#se").val()},
+		success:function(data){
+			console.log(data);
+			for(var i in data){
+				attt+=`
+								<tr>
+									<td>${data[i].tit}</td>
+									<td>${data[i].con}</td>
+								</tr>
+							`
+			}
+		document.getElementById("ta").innerHTML="<tr><th>名字</th><th>部门</th></tr>"+attt;
+
+		}
+	})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</html>

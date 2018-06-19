@@ -16,5 +16,9 @@
   "main": "app.js",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "async": "^2.6.1",
+    "mongodb": "^2.2.35"
+  }
 }
